@@ -1,7 +1,20 @@
 {
   "name": "redux_study",
   "version": "0.0.1",
+  "scripts": {
+  "start": "node dist/app.js",
+    "babel-node": "babel-node",
+    "applyMiddleware": "nodemon --exec npm run babel-node -- src/applyMiddleware.js",
+    "bindActionCreators": "nodemon --exec npm run babel-node -- src/bindActionCreators.js",
+    "combineReducers": "nodemon --exec npm run babel-node -- src/combineReducers.js",
+    "compose": "nodemon --exec npm run babel-node -- src/compose.js",
+    "createStore": "nodemon --exec npm run babel-node -- src/createStore.js"
+  },
   "dependencies": {
     "redux": "^3.6.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.3.13"
   }
 }
