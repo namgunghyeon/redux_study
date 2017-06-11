@@ -1,0 +1,48 @@
+/**
+ * Composes single-argument functions from right to left. The rightmost
+ * function can take multiple arguments as it provides the signature for
+ * the resulting composite function.
+ *
+ * @param {...Function} funcs The functions to compose.
+ * @returns {Function} A function obtained by composing the argument functions
+ * from right to left. For example, compose(f, g, h) is identical to doing
+ * (...args) => f(g(h(...args))).
+ */
+
+
+
+export default function compose(...funcs) {
+  if (funcs.length === 0) {
+    return arg => arg
+  }
+
+  if (funcs.length === 1) {
+    return funcs[0]
+  }
+
+  const last = funcs[funcs.length - 1]
+  const rest = funcs.slice(0, -1)
+  return (...args) => rest.reduceRight((composed, f) => f(composed), last(...args))
+
+
+}
+
+var flattened = [[0, 1], [2, 3], [4, 5]].reduceRight(function(a, b) {
+    return a.concat(b);
+}, []);
+// flattened is [4, 5, 2, 3, 0, 1]
+
+const square = x => {
+  console.log('square', x);
+  return x * x;
+}
+const square1 = x => {
+  console.log('square1', x);
+  return x * x;
+}
+const add = (x, y) => {
+  console.log('add', x, y);
+  return x + y;
+}
+
+//console.log(compose(square1, square, add)(1, 2))
