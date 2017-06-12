@@ -7,10 +7,10 @@ import $$observable from 'symbol-observable'
 const store = createStore(combineReducers(reducers), {todos:[]})
 
 const listenerA = () => {
-  console.log('listenerA', store.getState());
+  console.log('createStore listenerA', store.getState());
 }
 const listenerB = () => {
-  console.log('listenerB', store.getState());
+  console.log('createStore listenerB', store.getState());
 }
 let unsubscribeA = store.subscribe(listenerA)
 //let unsubscribeB = store.subscribe(listenerB)

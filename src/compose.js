@@ -30,19 +30,16 @@ export default function compose(...funcs) {
 var flattened = [[0, 1], [2, 3], [4, 5]].reduceRight(function(a, b) {
     return a.concat(b);
 }, []);
-// flattened is [4, 5, 2, 3, 0, 1]
 
 const square = x => {
-  console.log('square', x);
+  console.log('compose square', x);
   return x * x;
 }
 const square1 = x => {
-  console.log('square1', x);
+  console.log('compose square1', x);
   return x * x;
 }
 const add = (x, y) => {
-  console.log('add', x, y);
+  console.log('compose add', x, y);
   return x + y;
 }
-
-//console.log(compose(square1, square, add)(1, 2))

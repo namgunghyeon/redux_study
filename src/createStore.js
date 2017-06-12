@@ -247,7 +247,6 @@ export default function createStore(reducer, preloadedState, enhancer) {
   // reducer returns their initial state. This effectively populates
   // the initial state tree.
   dispatch({ type: ActionTypes.INIT })
-  console.log('test');
   return {
     dispatch,
     subscribe,

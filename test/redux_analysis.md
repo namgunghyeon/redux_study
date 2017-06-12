@@ -16,22 +16,50 @@ Store는 어플리케이션의 상태와 로직을 포함하고 있다. store의
 ### View
 화면 View
 
-
 #### state를 관리하기 위한 event loop
 1.Single Source of Truth
 2.State is read-only
 3.Changes are made with Pure Functions
 
 # createStore
+위에서 설명되어 있는 store역활
+액션을 통해서 상태가 변경되면 새로운 상태를 반환하고 listener에 등록되어 있는 함수를 호출한다.
+
+외부에 노출하는 함수
+- dispatch
+- subscribe
+- getState
+- replaceReducer
+- $$observable
 
 # combineReducers
+APP에서는 하나의 Reducer만 가지고 모든 상태를 변화시킬 수 없기 때문에 여러개의 reducer를 하나의 형태로 묶어준다.
+```
+{
+  storeKey1: reducer,
+  storeKey2: reducer,
+}
+```
 
 # applyMiddleware
+action에서 reducer가 호출되는 사이에 사용자가 원하는 기능을 넣을 수 있다.
+ex) logger, Api call ...
+
 
 # compose
+여러개의 함수를 하나의 함수로 묶어 주는 기능
+```javascript
+function test(a) { return 1 + a}
+function test2() { return 1 }
+```
+test 함수는 test2함수의 return 값을 받아서 처리될 때 compose로 묶어 줄 수 있다.
+
 
 # bindActionCreator
 
+
+### Source Analysis
+구현 방식이 고차함수(함수를 return 하거나 파라미터로 받아서 사용)로 되어 있다.
 
 ***출처: https://haruair.github.io/flux/docs/overview.html,
 https://deminoth.github.io/redux/Glossary.html***
